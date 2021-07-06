@@ -1,0 +1,27 @@
+{
+	"name": "delete_dataset1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedservice_azure",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"deleteactivities": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@dataset().deleteactivities",
+					"type": "Expression"
+				},
+				"container": "newcontainer"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

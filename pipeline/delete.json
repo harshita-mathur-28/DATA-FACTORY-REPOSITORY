@@ -1,0 +1,59 @@
+{
+	"name": "delete",
+	"properties": {
+		"activities": [
+			{
+				"name": "Delete1",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "deletedataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"deletefolder": {
+								"value": "@pipeline().parameters.deletefoler",
+								"type": "Expression"
+							}
+						}
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "linkedservice_azure",
+							"type": "LinkedServiceReference"
+						},
+						"path": "newcontainer"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"parameters": {
+			"deletefoler": {
+				"type": "array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-07-02T07:18:05Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,204 @@
+{
+	"name": "copy from source to sink",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": true
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "newcontainer/input/namesdata.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "newcontainer/input/"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": false,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "MergeFiles"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "linkedservice_azure",
+							"type": "LinkedServiceReference"
+						},
+						"path": "newcontainer/input/subinput"
+					},
+					"parallelCopies": 1,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Info",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "linkedservice_azure",
+								"type": "LinkedServiceReference"
+							},
+							"path": "newcontainer/input"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Sno",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Sno",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "name1",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "name2",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "name3",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "name4",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name6",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "name5",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "name6",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name7",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "name7",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "source_dataset",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sink_dataset",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"variables": {
+			"folder": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-07-02T13:28:06Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

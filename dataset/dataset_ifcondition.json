@@ -1,0 +1,65 @@
+{
+	"name": "dataset_ifcondition",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedservice_azure",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"outputfolder": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@dataset().outputfolder",
+					"type": "Expression"
+				},
+				"container": "newcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Sno",
+				"type": "String"
+			},
+			{
+				"name": "name1",
+				"type": "String"
+			},
+			{
+				"name": "name2",
+				"type": "String"
+			},
+			{
+				"name": "name3",
+				"type": "String"
+			},
+			{
+				"name": "name4",
+				"type": "String"
+			},
+			{
+				"name": "name5",
+				"type": "String"
+			},
+			{
+				"name": "name6",
+				"type": "String"
+			},
+			{
+				"name": "name7",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

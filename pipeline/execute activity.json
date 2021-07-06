@@ -1,0 +1,41 @@
+{
+	"name": "execute activity",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "copy from source to sink",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"sourcepath": {
+							"value": "@pipeline().parameters.sourcepath",
+							"type": "Expression"
+						},
+						"sourcefile": {
+							"value": "@pipeline().parameters.sourcefile",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"sourcepath": {
+				"type": "string"
+			},
+			"sourcefile": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-07-02T13:28:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

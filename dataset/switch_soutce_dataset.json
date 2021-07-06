@@ -1,0 +1,20 @@
+{
+	"name": "switch_soutce_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedservice_azure",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "namesdata.csv",
+				"folderPath": "input",
+				"container": "newcontainer"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

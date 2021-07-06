@@ -1,0 +1,9 @@
+{
+	"name": "data123factory",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0b5e9077-f1f3-4b90-b4fa-5a581e18ab31",
+		"tenantId": "e4e34038-ea1f-4882-b6e8-ccd776459ca0"
+	}
+}

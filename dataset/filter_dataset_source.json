@@ -1,0 +1,20 @@
+{
+	"name": "filter_dataset_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedservice_azure",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "dataset.txt",
+				"folderPath": "input",
+				"container": "newcontainer"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
